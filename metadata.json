@@ -1,0 +1,6 @@
+{
+  "name": "Fairy Cakes — Custom Cake Studio & Café",
+  "description": "Beloved custom cake studio and café in Parippally, Kollam, Kerala. Build your dream custom cake and explore fresh cream cakes, signature specials, and loaded café bites.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
