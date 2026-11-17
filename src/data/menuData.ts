@@ -1,3 +1,10 @@
+import heroCakeImg from '../assets/images/hero_custom_cake_1794836981123.jpg';
+import freshCreamImg from '../assets/images/menu_fresh_cream_1794836982614.jpg';
+import signatureSpecialsImg from '../assets/images/menu_signature_specials_1794836981417.jpg';
+import cafeBitesImg from '../assets/images/menu_cafe_bites_1794836983892.jpg';
+import shakesCoffeeImg from '../assets/images/menu_shakes_coffee_1794902019929.jpg';
+import browniesPastriesImg from '../assets/images/menu_brownies_pastries_1794902021433.jpg';
+
 export type MenuCategory =
   | 'All Treats'
   | 'Fresh Cream Cakes'
@@ -440,12 +447,12 @@ export const TIME_SLOTS: TimeSlotOption[] = [
 export const CAKE_FLAVORS = MENU_ITEMS.filter((item) => item.isCake);
 
 export const GALLERY_IMAGES = {
-  heroCake: '/src/assets/images/hero_custom_cake_1794836981123.jpg',
-  freshCream: '/src/assets/images/menu_fresh_cream_1794836982614.jpg',
-  signatureSpecials: '/src/assets/images/menu_signature_specials_1794836981417.jpg',
-  cafeBites: '/src/assets/images/menu_cafe_bites_1794836983892.jpg',
-  shakesCoffee: '/src/assets/images/menu_shakes_coffee_1794902019929.jpg',
-  browniesPastries: '/src/assets/images/menu_brownies_pastries_1794902021433.jpg',
+  heroCake: heroCakeImg,
+  freshCream: freshCreamImg,
+  signatureSpecials: signatureSpecialsImg,
+  cafeBites: cafeBitesImg,
+  shakesCoffee: shakesCoffeeImg,
+  browniesPastries: browniesPastriesImg,
 };
 
 export function buildWhatsAppUrl(message: string): string {
