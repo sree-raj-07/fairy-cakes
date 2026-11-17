@@ -190,10 +190,10 @@ export default function CakeConfigurator({
 
           <div className="grid grid-cols-1 lg:grid-cols-12">
             {/* Left 7 Columns: 5 Useful Customization Steps */}
-            <div className="lg:col-span-7 p-6 sm:p-9 space-y-8 border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-[#241118]">
+            <div className="lg:col-span-7 p-4 sm:p-8 lg:p-9 space-y-7 sm:space-y-8 border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-[#241118] min-w-0">
               {/* Step 1: Weight */}
               <div>
-                <div className="flex items-baseline justify-between gap-2 mb-3">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
                   <label className="font-display font-bold text-lg sm:text-xl text-[#241118]">
                     1. Choose Weight
                   </label>
@@ -205,7 +205,7 @@ export default function CakeConfigurator({
                 <div
                   role="radiogroup"
                   aria-label="Choose cake weight"
-                  className="grid grid-cols-2 sm:grid-cols-4 gap-3"
+                  className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3"
                 >
                   {WEIGHT_OPTIONS.map((weight) => {
                     const isSelected = selectedWeightId === weight.id;
@@ -219,14 +219,16 @@ export default function CakeConfigurator({
                           triggerSplatter(e.clientX, e.clientY, '#FFD166');
                           setSelectedWeightId(weight.id);
                         }}
-                        className={`px-3.5 py-3 rounded-2xl border-2 border-[#241118] font-bold text-left transition-all duration-150 ${
+                        className={`px-3 sm:px-3.5 py-3 rounded-2xl border-2 border-[#241118] font-bold text-left transition-all duration-150 ${
                           isSelected
                             ? 'bg-[#FFD166] text-[#241118] pop-shadow-sm -translate-y-0.5'
                             : 'bg-[#FFFBF5] text-[#241118] hover:bg-[#FFD166]/30'
                         }`}
                       >
-                        <div className="font-display text-lg tabular-nums">{weight.label}</div>
-                        <div className="text-xs font-semibold text-[#241118]/75">
+                        <div className="font-display text-base sm:text-lg tabular-nums">
+                          {weight.label}
+                        </div>
+                        <div className="text-[11px] sm:text-xs font-semibold text-[#241118]/75">
                           {weight.servingsHint}
                         </div>
                       </button>
@@ -246,11 +248,11 @@ export default function CakeConfigurator({
                   </label>
 
                   {/* Eggless Toggle */}
-                  <div className="inline-flex rounded-full border-2 border-[#241118] p-1 bg-[#FFFBF5] self-start">
+                  <div className="grid grid-cols-2 sm:inline-flex rounded-full border-2 border-[#241118] p-1 bg-[#FFFBF5] w-full sm:w-auto">
                     <button
                       type="button"
                       onClick={() => setIsEggless(false)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                      className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-colors text-center whitespace-nowrap ${
                         !isEggless ? 'bg-[#241118] text-[#FFD166]' : 'text-[#241118]'
                       }`}
                     >
@@ -262,11 +264,11 @@ export default function CakeConfigurator({
                         triggerSplatter(e.clientX, e.clientY, '#2EC4B6');
                         setIsEggless(true);
                       }}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-colors ${
+                      className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-colors text-center whitespace-nowrap ${
                         isEggless ? 'bg-[#2EC4B6] text-[#241118]' : 'text-[#241118]'
                       }`}
                     >
-                      100% Eggless (+₹100/kg)
+                      Eggless (+₹100/kg)
                     </button>
                   </div>
                 </div>
@@ -282,7 +284,7 @@ export default function CakeConfigurator({
                       setSelectedFrostingId('full-fondant');
                     }
                   }}
-                  className="w-full bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-base font-bold text-[#241118] focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40 cursor-pointer"
+                  className="w-full min-w-0 bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-sm sm:text-base font-bold text-[#241118] focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40 cursor-pointer"
                 >
                   {CAKE_FLAVORS.map((flavor) => (
                     <option key={flavor.id} value={flavor.id}>
@@ -320,7 +322,7 @@ export default function CakeConfigurator({
 
               {/* Step 3: Shape & Frosting Finish */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2 border-t-2 border-dashed border-[#241118]/20">
-                <div>
+                <div className="min-w-0">
                   <label className="block font-display font-bold text-base text-[#241118] mb-2.5">
                     3. Cake Shape
                   </label>
@@ -338,14 +340,14 @@ export default function CakeConfigurator({
                               setSelectedWeightId('2kg');
                             }
                           }}
-                          className={`px-3 py-2.5 rounded-xl border-2 border-[#241118] text-left transition-colors ${
+                          className={`p-2.5 sm:px-3 rounded-xl border-2 border-[#241118] text-left transition-colors min-w-0 ${
                             active
                               ? 'bg-[#FFD166] text-[#241118] font-bold'
                               : 'bg-[#FFFBF5] text-[#241118] hover:bg-[#FFF5EB] font-semibold'
                           }`}
                         >
-                          <div className="text-xs sm:text-sm">{shape.label}</div>
-                          <div className="text-[11px] opacity-80 tabular-nums">
+                          <div className="text-xs sm:text-sm leading-snug">{shape.label}</div>
+                          <div className="text-[11px] opacity-80 tabular-nums mt-0.5">
                             {shape.extraPrice > 0 ? `+₹${shape.extraPrice}` : 'Included'}
                           </div>
                         </button>
@@ -354,7 +356,7 @@ export default function CakeConfigurator({
                   </div>
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <label className="block font-display font-bold text-base text-[#241118] mb-2.5">
                     4. Frosting &amp; Finish
                   </label>
@@ -369,14 +371,14 @@ export default function CakeConfigurator({
                             triggerSplatter(e.clientX, e.clientY, '#2EC4B6');
                             setSelectedFrostingId(frost.id);
                           }}
-                          className={`px-3 py-2.5 rounded-xl border-2 border-[#241118] text-left transition-colors ${
+                          className={`p-2.5 sm:px-3 rounded-xl border-2 border-[#241118] text-left transition-colors min-w-0 ${
                             active
                               ? 'bg-[#2EC4B6] text-[#241118] font-bold'
                               : 'bg-[#FFFBF5] text-[#241118] hover:bg-[#FFF5EB] font-semibold'
                           }`}
                         >
-                          <div className="text-xs sm:text-sm">{frost.label}</div>
-                          <div className="text-[11px] opacity-80 tabular-nums">
+                          <div className="text-xs sm:text-sm leading-snug">{frost.label}</div>
+                          <div className="text-[11px] opacity-80 tabular-nums mt-0.5">
                             {frost.id === 'full-fondant'
                               ? 'Custom Quote'
                               : frost.extraPrice > 0
@@ -395,7 +397,7 @@ export default function CakeConfigurator({
                 <label className="block font-display font-bold text-base sm:text-lg text-[#241118] mb-2.5">
                   5. Gourmet Fillings &amp; Toppers (Optional)
                 </label>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {CAKE_ADDONS.map((addon) => {
                     const isChecked = selectedAddons.includes(addon.id);
                     return (
@@ -403,7 +405,7 @@ export default function CakeConfigurator({
                         key={addon.id}
                         type="button"
                         onClick={(e) => toggleAddon(addon.id, e.clientX, e.clientY)}
-                        className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full border-2 border-[#241118] text-xs sm:text-sm font-bold transition-all ${
+                        className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full border-2 border-[#241118] text-xs sm:text-sm font-bold transition-all ${
                           isChecked
                             ? 'bg-[#241118] text-[#FFD166]'
                             : 'bg-white text-[#241118] hover:bg-[#FFF5EB]'
@@ -426,7 +428,7 @@ export default function CakeConfigurator({
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
+                  <div className="min-w-0">
                     <label
                       htmlFor="cake-message-input"
                       className="block text-xs sm:text-sm font-bold text-[#241118] mb-1.5"
@@ -440,11 +442,11 @@ export default function CakeConfigurator({
                       value={cakeMessage}
                       onChange={(e) => setCakeMessage(e.target.value)}
                       placeholder="e.g., Happy Birthday Aarav!"
-                      className="w-full bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-sm sm:text-base font-medium text-[#241118] placeholder:text-[#241118]/45 focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40"
+                      className="w-full min-w-0 bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-sm sm:text-base font-medium text-[#241118] placeholder:text-[#241118]/45 focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40"
                     />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <label
                       htmlFor="delivery-date-input"
                       className="block text-xs sm:text-sm font-bold text-[#241118] mb-1.5"
@@ -457,7 +459,7 @@ export default function CakeConfigurator({
                       min={getTodayIsoDate()}
                       value={deliveryDate}
                       onChange={(e) => setDeliveryDate(e.target.value)}
-                      className="w-full bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-sm sm:text-base font-semibold text-[#241118] focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40"
+                      className="w-full min-w-0 max-w-full appearance-none bg-[#FFFBF5] border-2 border-[#241118] rounded-2xl px-4 py-3 text-sm sm:text-base font-semibold text-[#241118] focus:outline-none focus:ring-4 focus:ring-[#2EC4B6]/40"
                     />
                   </div>
                 </div>

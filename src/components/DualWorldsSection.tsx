@@ -18,9 +18,9 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
   };
 
   return (
-    <section id="worlds" className="bg-[#FFF8EE] py-14 sm:py-20">
+    <section id="worlds" className="bg-[#FFF8EE] py-12 sm:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <p className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#C9185B] mb-2">
             Two Delicious Worlds Under One Roof
           </p>
@@ -32,16 +32,15 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
           </h2>
         </div>
 
-        {/* MyFRIDA-inspired Bold Color-Blocked Dual Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7">
           {/* World 1: Custom Cake Studio */}
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-            className="bg-[#C9185B] text-white border-[3px] border-[#1A0A10] rounded-3xl p-6 sm:p-8 pop-shadow flex flex-col justify-between gap-6"
+            className="bg-[#C9185B] text-white border-[3px] border-[#1A0A10] rounded-3xl p-5 sm:p-8 pop-shadow flex flex-col justify-between gap-5 sm:gap-6"
           >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between gap-3">
+            <div className="space-y-3.5 sm:space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-2 bg-[#FFD166] text-[#1A0A10] border-2 border-[#1A0A10] rounded-full px-3.5 py-1 text-xs font-extrabold uppercase tracking-wide">
                   <CakeSlice className="w-4 h-4" aria-hidden="true" />
                   <span>01 · Cake Studio</span>
@@ -77,11 +76,11 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-1">
               <a
                 href="#custom-cake"
                 onClick={(e) => triggerSplatter(e.clientX, e.clientY, '#FFD166')}
-                className="inline-flex items-center gap-2 bg-[#FFD166] hover:bg-[#ffe08f] text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] pop-shadow-sm transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFD166] hover:bg-[#ffe08f] text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] pop-shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 <span>Open Cake Lab</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -91,7 +90,7 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
                 onClick={(e) =>
                   jumpToMenuCategory('Fresh Cream Cakes', e.clientX, e.clientY, '#FFD166')
                 }
-                className="inline-flex items-center gap-2 bg-white hover:bg-[#FFF8EE] text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#FFF8EE] text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] transition-colors"
               >
                 <span>Browse Cake Flavors</span>
               </button>
@@ -102,10 +101,10 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-            className="bg-[#2EC4B6] text-[#1A0A10] border-[3px] border-[#1A0A10] rounded-3xl p-6 sm:p-8 pop-shadow flex flex-col justify-between gap-6"
+            className="bg-[#2EC4B6] text-[#1A0A10] border-[3px] border-[#1A0A10] rounded-3xl p-5 sm:p-8 pop-shadow flex flex-col justify-between gap-5 sm:gap-6"
           >
-            <div className="space-y-4">
-              <div className="flex items-center justify-between gap-3">
+            <div className="space-y-3.5 sm:space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-2 bg-[#1A0A10] text-[#FFD166] border-2 border-[#1A0A10] rounded-full px-3.5 py-1 text-xs font-extrabold uppercase tracking-wide">
                   <Coffee className="w-4 h-4" aria-hidden="true" />
                   <span>02 · Hangout Café</span>
@@ -141,13 +140,13 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 pt-1">
               <button
                 type="button"
                 onClick={(e) =>
                   jumpToMenuCategory('Café Bites & Snacks', e.clientX, e.clientY, '#1A0A10')
                 }
-                className="inline-flex items-center gap-2 bg-[#1A0A10] hover:bg-[#32131E] text-[#FFD166] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] pop-shadow-sm transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 bg-[#1A0A10] hover:bg-[#32131E] text-[#FFD166] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] pop-shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 <span>See Savory Café Bites</span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -157,7 +156,7 @@ export default function DualWorldsSection({ onJumpToCategory }: DualWorldsSectio
                 onClick={(e) =>
                   jumpToMenuCategory('Shakes, Coffee & Jars', e.clientX, e.clientY, '#FFD166')
                 }
-                className="inline-flex items-center gap-2 bg-[#FFF8EE] hover:bg-white text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFF8EE] hover:bg-white text-[#1A0A10] font-extrabold text-sm px-5 py-3 rounded-full border-2 border-[#1A0A10] transition-colors"
               >
                 <span>Shakes &amp; Brownies</span>
               </button>

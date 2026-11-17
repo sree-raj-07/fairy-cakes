@@ -10,16 +10,16 @@ export default function Navbar() {
   );
 
   return (
-    <header className="sticky top-3 z-50 px-4 sm:px-6 pointer-events-none">
+    <header className="sticky top-3 z-50 px-3 sm:px-6 pointer-events-none">
       <div className="max-w-6xl mx-auto pointer-events-auto">
-        <div className="bg-[#FFF8EE] border-[2.5px] border-[#1A0A10] rounded-full pop-shadow-sm px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4 sm:gap-8">
+        <div className="bg-[#FFF8EE] border-[2.5px] border-[#1A0A10] rounded-full pop-shadow-sm px-3 sm:px-6 py-2 flex items-center justify-between gap-2 sm:gap-6">
           {/* Zone 1: Single-line Brand Wordmark */}
           <a
             href="#top"
-            className="flex items-center gap-2.5 font-display text-lg sm:text-xl font-extrabold text-[#1A0A10] tracking-tight whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EC4B6] rounded-full"
+            className="flex items-center gap-2 font-display text-base sm:text-xl font-extrabold text-[#1A0A10] tracking-tight whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EC4B6] rounded-full"
           >
-            <span className="w-8 h-8 rounded-full bg-[#FFD166] border-2 border-[#1A0A10] flex items-center justify-center shrink-0">
-              <CakeSlice className="w-4 h-4 text-[#1A0A10]" aria-hidden="true" />
+            <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFD166] border-2 border-[#1A0A10] flex items-center justify-center shrink-0">
+              <CakeSlice className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1A0A10]" aria-hidden="true" />
             </span>
             <span>Fairy Cakes</span>
           </a>
@@ -56,15 +56,16 @@ export default function Navbar() {
           </nav>
 
           {/* Zone 3: 1 Primary CTA + Mobile Toggle */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <a
               href={quickWhatsAppUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1A0A10] hover:bg-[#32131E] text-[#FFD166] font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-full whitespace-nowrap shrink-0 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EC4B6] min-h-[40px]"
+              className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#1A0A10] hover:bg-[#32131E] text-[#FFD166] font-bold text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-full whitespace-nowrap shrink-0 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2EC4B6] min-h-[38px] sm:min-h-[40px]"
             >
-              <MessageCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
-              <span>Order on WhatsApp</span>
+              <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" aria-hidden="true" />
+              <span className="sm:hidden">WhatsApp</span>
+              <span className="hidden sm:inline">Order on WhatsApp</span>
             </a>
 
             <button
@@ -72,12 +73,12 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="md:hidden w-10 h-10 rounded-full border-2 border-[#1A0A10] bg-white text-[#1A0A10] flex items-center justify-center shrink-0 hover:bg-[#FFD166] transition-colors"
+              className="md:hidden w-9 h-9 rounded-full border-2 border-[#1A0A10] bg-white text-[#1A0A10] flex items-center justify-center shrink-0 hover:bg-[#FFD166] transition-colors"
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5" aria-hidden="true" />
+                <X className="w-4 h-4" aria-hidden="true" />
               ) : (
-                <Menu className="w-5 h-5" aria-hidden="true" />
+                <Menu className="w-4 h-4" aria-hidden="true" />
               )}
             </button>
           </div>

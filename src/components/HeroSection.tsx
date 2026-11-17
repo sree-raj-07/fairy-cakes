@@ -49,7 +49,6 @@ const HERO_SLIDES = [
   },
 ];
 
-// SVG Paths for the "Every Bite." plaque: intact -> hovered bite -> tapped big chomp
 const PLAQUE_WHOLE_PATH =
   'M 18 4 L 282 4 Q 296 4 296 18 L 296 70 Q 296 84 282 84 L 18 84 Q 4 84 4 70 L 4 18 Q 4 4 18 4 Z';
 
@@ -64,14 +63,12 @@ export default function HeroSection() {
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, active: false });
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-  // Interactive "Every Bite." states
   const [biteHovered, setBiteHovered] = useState(false);
   const [biteLevel, setBiteLevel] = useState<0 | 1 | 2>(0);
   const [crumbBurstKey, setCrumbBurstKey] = useState(0);
 
   const { triggerSplatter } = useSplatter();
 
-  // Smooth cursor tracking for interactive hero background spotlight & parallax
   const pointerX = useMotionValue(0.65);
   const pointerY = useMotionValue(0.35);
   const smoothX = useSpring(pointerX, { stiffness: 120, damping: 22 });
@@ -81,7 +78,6 @@ export default function HeroSection() {
   const spotlightTop = useTransform(smoothY, [0, 1], ['15%', '80%']);
   const spotlightBg = useMotionTemplate`radial-gradient(620px circle at ${spotlightLeft} ${spotlightTop}, rgba(255, 209, 102, 0.24) 0%, rgba(201, 24, 91, 0.48) 38%, rgba(26, 10, 16, 0.96) 78%)`;
 
-  // Parallax offsets for interactive floating background confections
   const floatSlowX = useTransform(smoothX, [0, 1], [-26, 26]);
   const floatSlowY = useTransform(smoothY, [0, 1], [-22, 22]);
   const floatReverseX = useTransform(smoothX, [0, 1], [32, -32]);
@@ -89,7 +85,6 @@ export default function HeroSection() {
   const floatFastX = useTransform(smoothX, [0, 1], [-42, 42]);
   const floatFastY = useTransform(smoothY, [0, 1], [34, -34]);
 
-  // Cursor-reactive micro tilt for the "Every Bite." plaque
   const biteTiltX = useMotionValue(0);
   const biteTiltY = useMotionValue(0);
   const smoothBiteX = useSpring(biteTiltX, { stiffness: 260, damping: 18 });
@@ -112,7 +107,6 @@ export default function HeroSection() {
   };
 
   const handleHeroBackgroundClick = (e: MouseEvent<HTMLElement>) => {
-    // Only trigger background splatter when clicking non-interactive backdrop areas
     const target = e.target as HTMLElement;
     if (target.closest('a, button, input, select')) return;
     const colors = ['#FFD166', '#2EC4B6', '#C9185B', '#FFF8EE'];
@@ -171,7 +165,7 @@ export default function HeroSection() {
       id="top"
       onMouseMove={handleHeroPointerMove}
       onClick={handleHeroBackgroundClick}
-      className="relative overflow-hidden -mt-[76px] pt-[124px] pb-24 sm:pb-32 bg-[#1A0A10]"
+      className="relative overflow-hidden -mt-[76px] pt-[112px] sm:pt-[124px] pb-20 sm:pb-32 bg-[#1A0A10]"
     >
       {/* Interactive Cursor-Following Spotlight Backdrop */}
       <motion.div
@@ -182,19 +176,14 @@ export default function HeroSection() {
 
       {/* Interactive Cursor-Parallax Floating Confections & Sprinkles */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top-Left Mango Frosting Blob */}
         <motion.div
           style={{ x: floatSlowX, y: floatSlowY }}
           className="absolute top-20 -left-10 w-56 h-56 rounded-full bg-[#FFD166]/20 blur-sm"
         />
-
-        {/* Top-Right Pistachio Mint Orb */}
         <motion.div
           style={{ x: floatReverseX, y: floatReverseY }}
           className="absolute top-24 right-8 w-44 h-44 rounded-full bg-[#2EC4B6]/20"
         />
-
-        {/* Floating Cocoa & Berry Pop-Art Sprinkles reacting to pointer */}
         <motion.svg
           style={{ x: floatFastX, y: floatFastY }}
           viewBox="0 0 80 80"
@@ -207,22 +196,18 @@ export default function HeroSection() {
             strokeWidth="3"
           />
         </motion.svg>
-
         <motion.div
           style={{ x: floatReverseX, y: floatFastY }}
           className="hidden sm:block absolute bottom-28 left-[10%] w-9 h-4 rounded-full bg-[#2EC4B6] border-2 border-[#1A0A10] rotate-45 opacity-85"
         />
-
         <motion.div
           style={{ x: floatFastX, y: floatSlowY }}
           className="hidden sm:block absolute top-44 left-[6%] w-7 h-7 rounded-full bg-[#C9185B] border-2 border-[#FFD166] opacity-80"
         />
-
         <motion.div
           style={{ x: floatSlowX, y: floatReverseY }}
           className="hidden lg:block absolute bottom-32 left-[48%] w-10 h-4 rounded-full bg-[#FFD166] border-2 border-[#1A0A10] -rotate-12 opacity-85"
         />
-
         <motion.svg
           style={{ x: floatReverseX, y: floatSlowY }}
           viewBox="0 0 120 40"
@@ -245,17 +230,17 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 text-white space-y-6"
+            className="lg:col-span-6 text-white space-y-5 sm:space-y-6"
           >
-            <div className="inline-flex items-center gap-2 bg-[#FFD166] text-[#1A0A10] border-2 border-[#1A0A10] pop-shadow-sm rounded-full px-4 py-1.5 text-xs sm:text-sm font-extrabold tracking-tight -rotate-1">
-              <Zap className="w-4 h-4 fill-[#1A0A10] shrink-0" aria-hidden="true" />
-              <span>★ 4.9 Rated Cake Studio &amp; Café • Parippally</span>
+            <div className="inline-flex items-center gap-2 bg-[#FFD166] text-[#1A0A10] border-2 border-[#1A0A10] pop-shadow-sm rounded-full px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-sm font-extrabold tracking-tight -rotate-1 max-w-full">
+              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#1A0A10] shrink-0" aria-hidden="true" />
+              <span className="truncate">★ 4.9 Rated Cake Studio &amp; Café • Parippally</span>
             </div>
 
             <h1
-              className="font-display font-extrabold text-white leading-[1.02] tracking-tight"
+              className="font-display font-extrabold text-white leading-[1.06] tracking-tight"
               style={{
-                fontSize: 'clamp(2.75rem, 5.4vw, 4.5rem)',
+                fontSize: 'clamp(2.1rem, 5.2vw, 4.4rem)',
                 textWrap: 'balance',
               }}
             >
@@ -270,16 +255,14 @@ export default function HeroSection() {
                 whileTap={{ scale: 0.93, rotate: -4 }}
                 style={{ x: smoothBiteX, y: smoothBiteY }}
                 aria-label="Every Bite — hover or tap to take a bite"
-                className="relative inline-flex items-center justify-center align-middle px-5 py-1.5 -my-1 cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFD166] -rotate-1 group"
+                className="relative inline-flex items-center justify-center align-middle px-4 sm:px-5 py-1 sm:py-1.5 mt-1 sm:mt-0 cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFD166] -rotate-1 max-w-full"
               >
-                {/* SVG Plaque with Morphing Bite-Mark Cutout on Top-Right Edge */}
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 300 88"
                   preserveAspectRatio="none"
-                  className="absolute inset-0 w-full h-full overflow-visible drop-shadow-[5px_5px_0px_#1A0A10]"
+                  className="absolute inset-0 w-full h-full overflow-visible drop-shadow-[4px_4px_0px_#1A0A10] sm:drop-shadow-[5px_5px_0px_#1A0A10]"
                 >
-                  {/* Crisp White Inner Edge Highlight along the Bite Zone */}
                   <motion.path
                     d={activePlaquePath}
                     animate={{ d: activePlaquePath }}
@@ -289,7 +272,6 @@ export default function HeroSection() {
                     strokeWidth="4.5"
                     strokeLinejoin="round"
                   />
-                  {/* White Icing / Crumb Rim on the Bitten Edge while Hovering/Tapped */}
                   <motion.path
                     d="M 244 8 C 243 17 252 24 261 21 C 261 31 271 38 281 34 C 281 43 288 47 294 46"
                     fill="none"
@@ -305,37 +287,32 @@ export default function HeroSection() {
                   />
                 </svg>
 
-                {/* Flying Crumbs right off the bitten edge */}
                 <AnimatePresence>
                   {(isBitten || crumbBurstKey > 0) && (
                     <motion.span
                       key={`crumbs-${crumbBurstKey}-${isBitten ? 'on' : 'off'}`}
                       aria-hidden="true"
-                      className="pointer-events-none absolute -top-3 -right-3 z-20"
+                      className="pointer-events-none absolute -top-2 -right-2 z-20"
                     >
                       <motion.span
-                        initial={{ scale: 0, x: -8, y: 8, opacity: 1 }}
-                        animate={{ scale: 1, x: 10, y: -12, opacity: 0 }}
+                        initial={{ scale: 0, x: -6, y: 6, opacity: 1 }}
+                        animate={{ scale: 1, x: 8, y: -10, opacity: 0 }}
                         transition={{ duration: 0.5, ease: 'easeOut' }}
-                        className="block w-2.5 h-2.5 rounded-full bg-[#FFD166] border border-[#1A0A10]"
+                        className="block w-2 h-2 rounded-full bg-[#FFD166] border border-[#1A0A10]"
                       />
                       <motion.span
-                        initial={{ scale: 0, x: -6, y: 12, opacity: 1 }}
-                        animate={{ scale: 1.1, x: 18, y: 4, opacity: 0 }}
+                        initial={{ scale: 0, x: -4, y: 10, opacity: 1 }}
+                        animate={{ scale: 1.1, x: 14, y: 2, opacity: 0 }}
                         transition={{ duration: 0.55, delay: 0.04, ease: 'easeOut' }}
                         className="block w-2 h-2 rounded-sm bg-white border border-[#1A0A10] rotate-45"
-                      />
-                      <motion.span
-                        initial={{ scale: 0, x: -10, y: 6, opacity: 1 }}
-                        animate={{ scale: 0.9, x: 4, y: -18, opacity: 0 }}
-                        transition={{ duration: 0.48, delay: 0.06, ease: 'easeOut' }}
-                        className="block w-2 h-2 rounded-full bg-[#C9185B] border border-[#1A0A10]"
                       />
                     </motion.span>
                   )}
                 </AnimatePresence>
 
-                <span className="relative z-10 text-[#1A0A10] pr-2">Every Bite.</span>
+                <span className="relative z-10 text-[#1A0A10] pr-1 sm:pr-2 whitespace-nowrap">
+                  Every Bite.
+                </span>
               </motion.button>
             </h1>
 
@@ -344,11 +321,11 @@ export default function HeroSection() {
               chocolate shakes—crafted fresh daily in Parippally, Kollam.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3.5 sm:gap-4 pt-1">
               <a
                 href="#custom-cake"
                 onClick={(e) => triggerSplatter(e.clientX, e.clientY, '#FFD166')}
-                className="inline-flex items-center gap-2.5 bg-[#FFD166] hover:bg-[#ffe08f] text-[#1A0A10] font-extrabold text-base px-7 py-4 rounded-full border-[2.5px] border-[#1A0A10] pop-shadow-yellow transition-transform duration-150 hover:-translate-y-1 whitespace-nowrap shrink-0 min-h-[50px]"
+                className="inline-flex items-center justify-center gap-2.5 bg-[#FFD166] hover:bg-[#ffe08f] text-[#1A0A10] font-extrabold text-base px-7 py-3.5 sm:py-4 rounded-full border-[2.5px] border-[#1A0A10] pop-shadow-yellow transition-transform duration-150 hover:-translate-y-1 whitespace-nowrap shrink-0 min-h-[48px]"
               >
                 <span>Open Cake Lab</span>
                 <ArrowDown className="w-4 h-4" aria-hidden="true" />
@@ -357,7 +334,7 @@ export default function HeroSection() {
               <a
                 href="#menu"
                 onClick={(e) => triggerSplatter(e.clientX, e.clientY, '#2EC4B6')}
-                className="inline-flex items-center gap-2 bg-[#FFF8EE] hover:bg-white text-[#1A0A10] font-extrabold text-base px-7 py-4 rounded-full border-[2.5px] border-[#1A0A10] pop-shadow transition-transform duration-150 hover:-translate-y-1 whitespace-nowrap shrink-0 min-h-[50px]"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFF8EE] hover:bg-white text-[#1A0A10] font-extrabold text-base px-7 py-3.5 sm:py-4 rounded-full border-[2.5px] border-[#1A0A10] pop-shadow transition-transform duration-150 hover:-translate-y-1 whitespace-nowrap shrink-0 min-h-[48px]"
               >
                 <span>Explore Full Menu</span>
               </a>
@@ -377,7 +354,6 @@ export default function HeroSection() {
               className="relative w-full max-w-lg"
               style={{ perspective: '1000px' }}
             >
-              {/* Scroll-driven Floating Starburst Decal */}
               <motion.div
                 aria-hidden="true"
                 style={{ y: stickerY, rotate: stickerRotate }}
@@ -394,20 +370,20 @@ export default function HeroSection() {
               />
 
               <div
-                className="bg-[#FFF8EE] border-[3px] border-[#1A0A10] rounded-3xl p-4 sm:p-5 pop-shadow-yellow transition-transform duration-200 ease-out"
+                className="bg-[#FFF8EE] border-[3px] border-[#1A0A10] rounded-3xl p-3.5 sm:p-5 pop-shadow-yellow transition-transform duration-200 ease-out"
                 style={{
                   transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) ${
                     tilt.active ? 'scale(1.015)' : 'scale(1)'
                   }`,
                 }}
               >
-                {/* Live Sticker Badge */}
+                {/* Responsive Sticker Badge */}
                 <motion.div
                   key={activeSlide.badge}
-                  initial={{ scale: 0.85, rotate: -2 }}
-                  animate={{ scale: 1, rotate: 3 }}
+                  initial={{ scale: 0.85, rotate: -1 }}
+                  animate={{ scale: 1, rotate: 2 }}
                   transition={{ type: 'spring', stiffness: 320, damping: 18 }}
-                  className="absolute -top-4 right-4 sm:right-6 z-30 inline-flex items-center gap-1.5 bg-[#FFD166] text-[#1A0A10] border-2 border-[#1A0A10] pop-shadow-sm rounded-full px-4 py-1.5 text-xs sm:text-sm font-extrabold"
+                  className="mb-3 sm:mb-0 sm:absolute sm:-top-4 sm:right-6 z-30 inline-flex items-center gap-1.5 bg-[#FFD166] text-[#1A0A10] border-2 border-[#1A0A10] pop-shadow-sm rounded-full px-3.5 py-1 text-xs sm:text-sm font-extrabold"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#1A0A10] shrink-0" aria-hidden="true" />
                   <span>{activeSlide.badge}</span>
@@ -425,7 +401,7 @@ export default function HeroSection() {
                           setActiveSlideIndex(idx);
                           triggerSplatter(e.clientX, e.clientY, slide.accent);
                         }}
-                        className={`px-3.5 py-1.5 rounded-full text-xs font-extrabold border-2 border-[#1A0A10] transition-colors ${
+                        className={`px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-extrabold border-2 border-[#1A0A10] transition-colors whitespace-nowrap ${
                           isCurrent
                             ? 'bg-[#1A0A10] text-[#FFD166]'
                             : 'bg-white text-[#1A0A10] hover:bg-[#FFD166]/45'
@@ -458,14 +434,16 @@ export default function HeroSection() {
                   </AnimatePresence>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between gap-4 px-1">
-                  <div>
-                    <p className="font-display font-extrabold text-lg text-[#1A0A10]">
+                <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 px-1">
+                  <div className="min-w-0">
+                    <p className="font-display font-extrabold text-base sm:text-lg text-[#1A0A10]">
                       {activeSlide.title}
                     </p>
-                    <p className="text-sm font-semibold text-[#1A0A10]/75">{activeSlide.subtitle}</p>
+                    <p className="text-xs sm:text-sm font-semibold text-[#1A0A10]/75">
+                      {activeSlide.subtitle}
+                    </p>
                   </div>
-                  <div className="inline-flex items-center gap-1.5 bg-[#2EC4B6] text-[#1A0A10] border-2 border-[#1A0A10] rounded-full px-3 py-1 text-xs font-extrabold shrink-0">
+                  <div className="inline-flex items-center gap-1.5 bg-[#2EC4B6] text-[#1A0A10] border-2 border-[#1A0A10] rounded-full px-3 py-1 text-xs font-extrabold shrink-0 self-start sm:self-auto">
                     <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>{activeSlide.chip}</span>
                   </div>

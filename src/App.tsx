@@ -58,7 +58,7 @@ export default function App() {
   return (
     <SplatterProvider>
       <IntroSplash />
-      <div className="min-h-screen flex flex-col bg-[#FFF8EE] text-[#1A0A10]">
+      <div className="min-h-screen flex flex-col bg-[#FFF8EE] text-[#1A0A10] overflow-x-clip">
         <Navbar />
         <main className="flex-1">
           <HeroSection />
